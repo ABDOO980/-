@@ -1,0 +1,22 @@
+# Deploys the web app (frontend only) to Netlify straight from GitHub.
+[build]
+  base = "sakeena-project"
+  command = "corepack enable && NODE_ENV=development pnpm install --no-frozen-lockfile && PORT=3000 BASE_PATH=/ pnpm --filter @workspace/sakeena-pwa build"
+  publish = "artifacts/sakeena-pwa/dist/public"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NETLIFY_USE_PNPM = "true"
+  PNPM_FLAGS = "--no-frozen-lockfile"
+
+# Single-page app: every address opens index.html and the app picks the page.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# The service worker must never be served from an old cache.
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"

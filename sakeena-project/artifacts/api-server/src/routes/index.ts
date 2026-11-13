@@ -1,0 +1,44 @@
+import { Router, type IRouter } from "express";
+import healthRouter from "./health";
+import duaWallRouter from "./dua-wall";
+import bookmarksRouter from "./bookmarks";
+import khatmahRouter from "./khatmah";
+import preferencesRouter from "./preferences";
+import favoriteHadithsRouter from "./favorite-hadiths";
+import quizProgressRouter from "./quiz-progress";
+import adhkarProgressRouter from "./adhkar-progress";
+import pushRouter from "./push";
+import weeklyChallengeRouter from "./weekly-challenge";
+import meRouter from "./me";
+import quizRoomsRouter from "./quiz-rooms";
+import adminRouter from "./admin";
+import countersRouter from "./counters";
+import groupKhatmahRouter from "./group-khatmah";
+import contentRouter from "./content";
+import announcementsRouter from "./announcements";
+import liveRouter from "./live";
+import notificationSettingsRouter from "./notification-settings";
+
+const router: IRouter = Router();
+
+router.use(healthRouter);
+router.use(duaWallRouter);
+router.use(bookmarksRouter);
+router.use(khatmahRouter);
+router.use(preferencesRouter);
+router.use(favoriteHadithsRouter);
+router.use(quizProgressRouter);
+router.use(adhkarProgressRouter);
+router.use(pushRouter);
+router.use(weeklyChallengeRouter);
+router.use(meRouter);
+router.use(quizRoomsRouter);
+router.use(adminRouter);
+router.use(countersRouter);
+router.use(groupKhatmahRouter);
+router.use(contentRouter);
+router.use(announcementsRouter);
+router.use(liveRouter);
+router.use(notificationSettingsRouter);
+
+export default router;

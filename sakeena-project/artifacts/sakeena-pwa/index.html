@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+        <script>
+      try { var s = JSON.parse(localStorage.getItem('sakeena.text-scale')); if (s >= 80 && s <= 160) document.documentElement.style.fontSize = s + '%'; } catch (e) {}
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سَكينة — PWA للقرآن والأذكار</title>
+    <meta name="description" content="سَكينة — رفيقك الهادئ للقرآن والأذكار والعبادة اليومية." />
+    <meta name="theme-color" content="#0B120E" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="سَكينة — PWA للقرآن والأذكار" />
+    <meta property="og:description" content="رفيقك الهادئ للقرآن والأذكار والعبادة اليومية." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="سَكينة — PWA للقرآن والأذكار" />
+    <meta name="twitter:description" content="رفيقك الهادئ للقرآن والأذكار والعبادة اليومية." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body>
+    <script>
+      // If the app fails to start, show why on screen (instead of a blank page).
+      (function () {
+        var errors = [];
+        function note(text) { errors.push(String(text)); }
+        window.addEventListener('error', function (e) {
+          var t = e.target;
+          if (t && t !== window && (t.src || t.href)) note('تعذر تحميل: ' + (t.src || t.href));
+          else note((e.message || 'error') + ' @ ' + (e.filename || '') + ':' + (e.lineno || ''));
+        }, true);
+        window.addEventListener('unhandledrejection', function (e) { note('promise: ' + (e.reason && (e.reason.stack || e.reason.message) || e.reason)); });
+        setTimeout(function () {
+          var root = document.getElementById('root');
+          if (document.getElementById('splash')) {
+            var box = document.createElement('pre');
+            box.setAttribute('dir', 'ltr');
+            box.style.cssText = 'position:fixed;left:0;right:0;bottom:0;max-height:70vh;overflow:auto;margin:0;padding:12px;background:#2a0a0a;color:#fff;font:12px/1.5 monospace;white-space:pre-wrap;z-index:99999';
+            box.textContent = 'Sakeena failed to start\n\n' + (errors.length ? errors.join('\n\n') : '(no error captured)');
+            document.body.appendChild(box);
+          }
+        }, 4000);
+      })();
+    </script>
+    <div id="root"><div id="splash" role="status" aria-label="جارٍ التحميل" style="min-height:100vh;box-sizing:border-box;padding:20px 16px;background:#0B120E">
+<style>@keyframes skp{0%,100%{opacity:.5}50%{opacity:1}}#splash .sk{background:#16241c;border-radius:18px;animation:skp 1.6s ease-in-out infinite}@media (prefers-reduced-motion:reduce){#splash .sk{animation:none}}</style>
+<p style="margin:4px 0 18px;text-align:center;color:#DFB85C;font:600 20px/1.4 system-ui,sans-serif">سَكينة</p>
+<div class="sk" style="height:150px;margin-bottom:16px"></div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px"><div class="sk" style="height:78px"></div><div class="sk" style="height:78px"></div><div class="sk" style="height:78px"></div><div class="sk" style="height:78px"></div></div>
+<div class="sk" style="height:96px;margin-bottom:12px"></div>
+<div class="sk" style="height:96px"></div>
+</div></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
